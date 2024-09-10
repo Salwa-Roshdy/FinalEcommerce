@@ -1,0 +1,24 @@
+<section class="bg-main-light rounded-4 shadow p-4 my-2 w-75 mx-auto">
+  <div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="h2 text-center">All Orders</h1>
+
+  </div>
+  <p class="text-main"></p>
+  @for (orders of ordersList; track orders._id) {
+  <div class="row mb-1 border-bottom">
+    <div class="col-md-12 d-flex align-items-center justify-content-between">
+      <div>
+        <h3 class="h5">Address Details:{{ orders.shippingAddress.details }}</h3>
+        <h3 class="h5">City:{{ orders.shippingAddress.city }}</h3>
+        <h3 class="h5">Phone:{{ orders.shippingAddress.phone }}</h3>
+        <h3 class="h5">Shipping Price:{{ orders.shippingPrice }}</h3>
+        <p>Is Paid:{{ orders.isPaid }}</p>
+        <p>Paid At:{{ orders.paidAt }}</p>
+        <p>Payment Method:{{ orders.paymentMethodType }}</p>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+</section>

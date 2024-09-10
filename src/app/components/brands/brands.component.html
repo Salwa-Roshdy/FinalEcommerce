@@ -1,0 +1,75 @@
+<section class="a">
+  <div class="container">
+    <h2>All Brands:</h2>
+
+    <div class="row g-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      @for (brand of brandsList; track brand._id) {
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+        <div class="product p-2" (click)="getSpecificbrand(brand._id)">
+          <div class="img">
+            <img
+              [src]="brand.image"
+              class="w-100"
+              style="height: 250px"
+              [alt]="brand.name"
+            />
+          </div>
+          <div class="title">
+            <h4 class="h6 text-center">{{ brand.name }}</h4>
+          </div>
+        </div>
+      </div>
+      }
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row justify-content-center align-items-center">
+                  <div class="col-md-6">
+                    <div class="title">
+                      <h2 class="text-main fw-bold">
+                        {{ specificBrand.name }}
+                      </h2>
+                      <h4 class="h4">{{ specificBrand.slug }}</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div>
+                      <img [src]="specificBrand.image" class="w-100" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

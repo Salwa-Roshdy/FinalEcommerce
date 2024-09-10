@@ -1,0 +1,32 @@
+<section>
+  <div class="container">
+    <h2>All Categories:</h2>
+    <div class="row g-3">
+      @for (category of categoriesList; track category._id) {
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <div
+          class="product"
+          style="height: 300px"
+          [routerLink]="['/categoryDetails', category._id]"
+        >
+          <div
+            class="img"
+            style="
+              height: 250px;
+              background-position: center;
+              background-size: cover;
+            "
+            [ngStyle]="{ 'background-image': 'url(' + category.image + ')' }"
+          ></div>
+          <div class="title">
+            <!--     <h3 class="small">{{ category}}</h3> -->
+            <h4 class="pt-2 text-main fw-bold text-center">
+              {{ category.name }}
+            </h4>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

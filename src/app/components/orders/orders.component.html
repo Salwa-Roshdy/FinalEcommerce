@@ -1,0 +1,100 @@
+<section
+  class="bg-main-light rounded-4 shadow p-2 mx-auto w-75 my-5"
+  (ngSubmit)="orderSubmit()"
+>
+  <div class="container">
+    <h1 class="text-center">Shipping Address</h1>
+    <form [formGroup]="orders">
+      <div>
+        <label for="details">Details</label>
+        <textarea
+          formControlName="details"
+          type="text"
+          id="details"
+          class="form-control"
+          [ngClass]="{
+            'is-valid':
+              !orders.get('details')?.errors &&
+              (orders.get('details')?.touched || orders.get('details')?.dirty),
+            'is-invalid':
+              orders.get('details')?.errors &&
+              (orders.get('details')?.touched || orders.get('details')?.dirty)
+          }"
+        ></textarea>
+        @if(orders.get('details')?.errors &&(orders.get('details')?.touched||
+        orders.get('details')?.dirty)){
+        <div class="alert alert-danger w-50">
+          @if(orders.get('details')?.getError('required')) {
+          <p class="my-2">details is required</p>
+          } @else if (orders.get('details')?.getError('details')) {
+          <p class="my-2">details doesn't exist</p>
+          }
+        </div>
+        }
+      </div>
+      <div>
+        <label for="phone">phone</label>
+        <input
+          formControlName="phone"
+          type="tel"
+          id="phone"
+          class="form-control"
+          [ngClass]="{
+            'is-valid':
+              !orders.get('phone')?.errors &&
+              (orders.get('phone')?.touched || orders.get('phone')?.dirty),
+            'is-invalid':
+              orders.get('phone')?.errors &&
+              (orders.get('phone')?.touched || orders.get('phone')?.dirty)
+          }"
+        />
+        @if(orders.get('phone')?.errors &&(orders.get('phone')?.touched||
+        orders.get('phone')?.dirty)){
+        <div class="alert alert-danger w-50">
+          @if(orders.get('phone')?.getError('required')) {
+          <p class="my-2">phone is required</p>
+          }
+        </div>
+        }
+      </div>
+      <div>
+        <label for="city">city</label>
+        <input
+          formControlName="city"
+          type="text"
+          id="city"
+          class="form-control"
+          [ngClass]="{
+            'is-valid':
+              !orders.get('city')?.errors &&
+              (orders.get('city')?.touched || orders.get('city')?.dirty),
+            'is-invalid':
+              orders.get('city')?.errors &&
+              (orders.get('city')?.touched || orders.get('city')?.dirty)
+          }"
+        />
+        @if(orders.get('city')?.errors &&(orders.get('city')?.touched||
+        orders.get('city')?.dirty)){
+        <div class="alert alert-danger w-50">
+          @if(orders.get('city')?.getError('required')) {
+          <p class="my-2">city is required</p>
+          }
+        </div>
+        }
+      </div>
+      <button
+        class="btn-main mt-2"
+        [disabled]="orders.invalid"
+        type="submit"
+        (click)="orderSubmit()"
+      >
+        CheckOut
+      </button>
+      @if(msgError){
+      <p class="alert alert-danger w-50 m-0">{{ msgError }}</p>
+      } @if (successMsg) {
+      <p>Success</p>
+      }
+    </form>
+  </div>
+</section>
